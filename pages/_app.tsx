@@ -20,7 +20,7 @@ import { getSigningCosmosClientOptions } from 'stargazejs';
 import { TailwindModal } from '../components';
 import { networkType } from '../config';
 
-import { SignerOptions } from '@cosmos-kit/core';
+import { ChainName, EndpointOptions, Endpoints, SignerOptions } from '@cosmos-kit/core';
 import { chains, assets } from 'chain-registry';
 import { Chain } from '@chain-registry/types';
 
@@ -70,11 +70,38 @@ const wagmiConfig = createConfig({
   publicClient: evmConfigs.publicClient,
 })
 
+function prioritizePolkachu(strings: string[]): string[] {
+  const index = strings.findIndex((str) => str.includes('polkachu'));
+
+  if (index > -1) {
+    const [item] = strings.splice(index, 1);
+    strings.unshift(item);
+  }
+
+  return strings;
+}
+
 function AstralApp({ Component, pageProps }: AppProps) {
   const signerOptions: SignerOptions = {
     signingStargate: defaultGasForChain,
     signingCosmwasm: defaultGasForChain,
   };
+
+  const chainRpcs = chains
+  .map((chain) => {
+    const rpcs = chain.apis?.rpc?.map((rpc) => rpc.address) || [];
+    return { chain_name: chain.chain_name, rpc: prioritizePolkachu(rpcs) };
+  });
+  const endpoints: Record<ChainName, Endpoints> = {};
+  chainRpcs.forEach((chain) => {
+    endpoints[chain.chain_name] = { rpc: chain.rpc };
+  });
+
+  const endpointOptions: EndpointOptions = {
+    isLazy: true, // set to true for disabling endpoints validation, this way it uses 1st entry (polkachu) as default, https://docs.cosmoskit.com/provider/chain-provider#islazy
+    endpoints,
+  };
+
 
   return (
     <ChainProvider
@@ -94,6 +121,7 @@ function AstralApp({ Component, pageProps }: AppProps) {
         },
       }}
       wrappedWithChakra={false}
+      endpointOptions={endpointOptions}
       signerOptions={signerOptions}
       walletModal={TailwindModal}
     >
