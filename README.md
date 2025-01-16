@@ -21,6 +21,3 @@ ____
 Click to view the full app walkthrough!
 
 ![Transfer Example](./public/docs/transfer_nft_ics721.gif)
-
-###### NOTE:
-This project is a submission for the Cosmos Game of NFTs - Interchain Hackathon 2023.
