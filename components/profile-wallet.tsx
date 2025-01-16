@@ -13,7 +13,7 @@ import { chainName } from '../config'
 
 export const ProfileWallet = () => {
   const [wallets, setWallets] = useState({});
-  const [walletId, setWalletId] = useState();
+  const [walletId, setWalletId] = useState<String>();
   const rootAccount = useAccount({
     onDisconnect() {
       setWalletId()

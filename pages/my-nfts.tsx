@@ -62,13 +62,6 @@ export interface ChainSelectable extends Chain {
   selected?: boolean
 }
 
-const defaultSelectedNetworks = (): ChainSelectable[] => {
-  return availableNetworks.map(a => {
-    a.selected = true
-    return a
-  })
-}
-
 const apolloUriEthereum = process.env.NEXT_PUBLIC_APOLLO_URI_ETHEREUM || ''
 const clientEthereum = new ApolloClient({
   uri: apolloUriEthereum,
@@ -85,7 +78,7 @@ export default function MyNfts() {
   const [isAuthed, setIsAuthed] = useState(false);
   const [activeTab, setActiveTab] = useState(2)
   const [hasData, setHasData] = useState(false);
-  const [selectedChains, setSelectedChains] = useState<ChainSelectable[]>([]);
+  const [selectedChains, setSelectedChains] = useState<Chain[] | undefined>([]);
   const [nfts, setNfts] = useState<any[]>([]);
   const [ownerAddresses, setOwnerAddresses] = useState<QueryChainAddresses>({});
   const [getOwnedTokensStargaze, ownedTokensStargazeQuery] = useLazyQuery<OwnedTokens>(OWNEDTOKENS_STARGAZE);
@@ -299,7 +292,7 @@ export default function MyNfts() {
       setIsLoadingProviders(true)
       for await (const chain of selectedChains) {
         if (!chain.selected) ownerAddresses[chain.chain_id] = []
-        else if (chain.chain_id != 'ethereummainnet') {
+        else if (chain.chain_id != 'xion-mainnet-1') {
           const repo = manager.getWalletRepo(chain.chain_name)
           if (repo.isWalletDisconnected) await repo.connect(repo.wallets[0].walletName, true)
           if (repo.current?.address) {
@@ -338,7 +331,7 @@ export default function MyNfts() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ethAccount.address, router]);
 
-  if (!selectedChains.length) setSelectedChains(defaultSelectedNetworks())
+  if (!selectedChains?.length) setSelectedChains(availableNetworks)
 
   return (
     <div className="relative min-h-window pt-12 pb-24">
@@ -422,7 +415,7 @@ export default function MyNfts() {
                 <Popover.Button className="group px-4 py-2 inline-flex items-center justify-center text-sm font-medium text-white hover:text-gray-100 ring-0 focus:ring-transparent border border-1 rounded border-zinc-800 hover:bg-zinc-900">
                   <span>Active Networks</span>
                   <span className="ml-1.5 rounded bg-gray-600 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-200">
-                    {selectedChains.filter(s => s.selected).length}
+                    {selectedChains?.filter(s => s.selected).length}
                   </span>
                   <ChevronDownIcon className="m-auto ml-2 w-6 h-6 text-white" />
                 </Popover.Button>
@@ -439,7 +432,7 @@ export default function MyNfts() {
               >
                 <Popover.Panel className="absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-gray-900 p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
                   <form className="space-y-4">
-                    {selectedChains.map((option, optionIdx) => (
+                    {selectedChains?.map((option, optionIdx) => (
                       <div key={option.chain_id} className="flex items-center">
                         <input
                           id={`filter-${option.chain_id}-${optionIdx}`}
@@ -453,7 +446,8 @@ export default function MyNfts() {
                           htmlFor={`filter-${option.chain_id}-${optionIdx}`}
                           className="ml-3 whitespace-nowrap pr-6 text-sm font-medium text-gray-100"
                         >
-                          {option.pretty_name}
+                          {/* {option.pretty_name} */}
+                          Xion Testnet
                         </label>
                       </div>
                     ))}

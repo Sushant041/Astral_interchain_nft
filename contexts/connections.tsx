@@ -78,217 +78,21 @@ export interface NFTConnectionChain extends NFTConnection {
 
 export const mainnetConnections: NFTConnection[] = [
 	{
-		channel_a: {
-			chain_id: "stargaze-1",
-			port: "wasm.stars1r0a8ygvnjfaegy4n5z9325e0ew9uy2s7rn4vt7qf4ltv49fj4tnsk6pvtv",
-			channel: "channel-213",
-		},
-		channel_b: {
-			chain_id: "juno-1",
-			port: "wasm.juno1kc0lcysppht7s8xl263q208u2t7epw5h3zvhyscsxjlz560yysmsrd8ydt",
-			channel: "channel-333",
-		},
+	  channel_a: {
+		chain_id: "xion-mainnet-1",
+		port: "transfer",
+		channel: "channel-225057",
+	  },
 	},
-	{
-		channel_a: {
-			chain_id: "stargaze-1",
-			port: "wasm.stars1r0a8ygvnjfaegy4n5z9325e0ew9uy2s7rn4vt7qf4ltv49fj4tnsk6pvtv",
-			channel: "channel-209",
-		},
-		channel_b: {
-			chain_id: "phoenix-1",
-			port: "wasm.terra1ed3qw4y4ca3lpj82ugg2jqsjr9czd0yyldcpp5n5yd7hu6udqafslz0nmg",
-			channel: "channel-238",
-		},
-	},
-	{
-		channel_a: {
-			chain_id: "phoenix-1",
-			port: "wasm.terra1ed3qw4y4ca3lpj82ugg2jqsjr9czd0yyldcpp5n5yd7hu6udqafslz0nmg",
-			channel: "channel-240",
-		},
-		channel_b: {
-			chain_id: "juno-1",
-			port: "wasm.juno1kc0lcysppht7s8xl263q208u2t7epw5h3zvhyscsxjlz560yysmsrd8ydt",
-			channel: "channel-339",
-		},
-	},
-]
-
-// Examples:
-// {
-// 	channel_a: {
-// 		chain_id: "gon-irishub-1", //"uptick_7000-2"
-// 		port:    "nft-transfer",
-// 		channel: "channel-22",
-// 	},
-// 	channel_b: {
-// 		chain_id: "elgafar-1",
-// 		port:    "wasm.stars1ve46fjrhcrum94c7d8yc2wsdz8cpuw73503e8qn9r44spr6dw0lsvmvtqh",
-// 		channel: "channel-207",
-// 	},
-// },
-// {
-// 	channel_a: {
-// 		chain_id: "elgafar-1",
-// 		port: "wasm.stars1qpl2xtwgrlnhg7c5f56tn8sgru53yxae8qx6zcxcz40fnfa9vk2sypwh0e",
-// 		channel: "channel-468",
-// 	},
-// 	channel_b: {
-// 		chain_id: "uni-6",
-// 		port: "wasm.juno17f8seg2s7vekzjf9u340krujcvyx3sqrj6ggcukhp9dyv64hhdxqkm4frn",
-// 		channel: "channel-443",
-// 	},
-// },
-// 
-// 
+  ];
+  
 // NOTE: You do not need to specify the inverse, code will pick it up in logic
 export const testnetConnections: NFTConnection[] = [
-	// NOTE: Old-----
-	// {
-	// 	channel_a: {
-	// 		chain_id: "elgafar-1",
-	// 		port: "wasm.stars1a7mszjlnfkzy7gnmvwzlapuxpf52su648079jumlzszw6y8fqd9qkfh8zj",
-	// 		channel: "channel-504",
-	// 	},
-	// 	channel_b: {
-	// 		chain_id: "uni-6",
-	// 		port: "wasm.juno1ga6anf5zj7fnx6gj5e43wkqwh8lf8zu0dkcd277grghp2gsapjpqh65dfj",
-	// 		channel: "channel-552",
-	// 	},
-	// },
-	// {
-	// 	channel_a: {
-	// 		chain_id: "elgafar-1",
-	// 		port: "wasm.stars1a7mszjlnfkzy7gnmvwzlapuxpf52su648079jumlzszw6y8fqd9qkfh8zj",
-	// 		channel: "channel-505",
-	// 	},
-	// 	channel_b: {
-	// 		chain_id: "pisco-1",
-	// 		port: "wasm.terra1r4mqmqxu4we35nfszgv3ksctxtjhv7v5j35gml6dfjeey35hg74qx4ffxf",
-	// 		channel: "channel-299",
-	// 	},
-	// },
-	// {
-	// 	channel_a: {
-	// 		chain_id: "uni-6",
-	// 		port: "wasm.juno1ga6anf5zj7fnx6gj5e43wkqwh8lf8zu0dkcd277grghp2gsapjpqh65dfj",
-	// 		channel: "channel-553",
-	// 	},
-	// 	channel_b: {
-	// 		chain_id: "pisco-1",
-	// 		port: "wasm.terra1r4mqmqxu4we35nfszgv3ksctxtjhv7v5j35gml6dfjeey35hg74qx4ffxf",
-	// 		channel: "channel-298",
-	// 	},
-	// },
-	// {
-	// 	channel_a: {
-	// 		chain_id: "elgafar-1",
-	// 		port: "wasm.stars166xr8hy2t6tmzufnjpc6psnm3apgdk8lkayksu4qg4nxkdwr3gvs98wh7h",
-	// 		channel: "channel-515",
-	// 	},
-	// 	channel_b: {
-	// 		chain_id: "uni-6",
-	// 		port: "wasm.juno1wk9te824s2as29qntdxtcs6fn8y350g6exuw7hldmrrwze6y6ugse8ulfa",
-	// 		channel: "channel-583",
-	// 	},
-	// },
-	// {
-	// 	channel_a: {
-	// 		chain_id: "elgafar-1",
-	// 		port: "wasm.stars1ytu7kwcmkn0qhm2r229d3zdhzuscekae8xncddy34pzyz9956jaq8auqn6",
-	// 		channel: "channel-524",
-	// 	},
-	// 	channel_b: {
-	// 		chain_id: "uni-6",
-	// 		port: "wasm.juno1dk49cyz7q7vr3san6l955pkd9uf8j2c2gkfgjyvx8tdfuplws98qfl556k",
-	// 		channel: "channel-591",
-	// 	},
-	// },
-	// {
-	// 	channel_a: {
-	// 		chain_id: "elgafar-1",
-	// 		port: "wasm.stars165fr5j3ea0dk5yr5sr4h8uw76z5fd34lpnqc2x80ya9xkx9u0k3qjrqpzq",
-	// 		channel: "channel-553",
-	// 	},
-	// 	channel_b: {
-	// 		chain_id: "uni-6",
-	// 		port: "wasm.juno1uvflayc34fs9r3tzcausztks2058ecpt5kqtzf3sz5kwnu7fjtfqn7zmtj",
-	// 		channel: "channel-651",
-	// 	},
-	// },
-
-	// old channels, valid contracts
-	// {
-	// 	channel_a: {
-	// 		chain_id: "elgafar-1",
-	// 		port: "wasm.stars165fr5j3ea0dk5yr5sr4h8uw76z5fd34lpnqc2x80ya9xkx9u0k3qjrqpzq",
-	// 		channel: "channel-580",
-	// 	},
-	// 	channel_b: {
-	// 		chain_id: "uni-6",
-	// 		port: "wasm.juno1uvflayc34fs9r3tzcausztks2058ecpt5kqtzf3sz5kwnu7fjtfqn7zmtj",
-	// 		channel: "channel-705",
-	// 	},
-	// },
-	// {
-	// 	channel_a: {
-	// 		chain_id: "elgafar-1",
-	// 		port: "wasm.stars165fr5j3ea0dk5yr5sr4h8uw76z5fd34lpnqc2x80ya9xkx9u0k3qjrqpzq",
-	// 		channel: "channel-581",
-	// 	},
-	// 	channel_b: {
-	// 		chain_id: "pisco-1",
-	// 		port: "wasm.terra1luhy2ngj7y0lqy3vjek3xm777pywptzzea0sc5ymu4pmafjrn07s5rlmxt",
-	// 		channel: "channel-345",
-	// 	},
-	// },
-	// {
-	// 	channel_a: {
-	// 		chain_id: "pisco-1",
-	// 		port: "wasm.terra1luhy2ngj7y0lqy3vjek3xm777pywptzzea0sc5ymu4pmafjrn07s5rlmxt",
-	// 		channel: "channel-344",
-	// 	},
-	// 	channel_b: {
-	// 		chain_id: "uni-6",
-	// 		port: "wasm.juno1uvflayc34fs9r3tzcausztks2058ecpt5kqtzf3sz5kwnu7fjtfqn7zmtj",
-	// 		channel: "channel-706",
-	// 	},
-	// },
 	{
 		channel_a: {
-			chain_id: "elgafar-1",
-			port: "wasm.stars165fr5j3ea0dk5yr5sr4h8uw76z5fd34lpnqc2x80ya9xkx9u0k3qjrqpzq",
-			channel: "channel-589",
-		},
-		channel_b: {
-			chain_id: "uni-6",
-			port: "wasm.juno1uvflayc34fs9r3tzcausztks2058ecpt5kqtzf3sz5kwnu7fjtfqn7zmtj",
-			channel: "channel-721",
-		},
-	},
-	{
-		channel_a: {
-			chain_id: "elgafar-1",
-			port: "wasm.stars165fr5j3ea0dk5yr5sr4h8uw76z5fd34lpnqc2x80ya9xkx9u0k3qjrqpzq",
-			channel: "channel-590",
-		},
-		channel_b: {
-			chain_id: "pisco-1",
-			port: "wasm.terra1luhy2ngj7y0lqy3vjek3xm777pywptzzea0sc5ymu4pmafjrn07s5rlmxt",
-			channel: "channel-354",
-		},
-	},
-	{
-		channel_a: {
-			chain_id: "pisco-1",
-			port: "wasm.terra1luhy2ngj7y0lqy3vjek3xm777pywptzzea0sc5ymu4pmafjrn07s5rlmxt",
-			channel: "channel-353",
-		},
-		channel_b: {
-			chain_id: "uni-6",
-			port: "wasm.juno1uvflayc34fs9r3tzcausztks2058ecpt5kqtzf3sz5kwnu7fjtfqn7zmtj",
-			channel: "channel-722",
+			chain_id: "xion-testnet-1",
+			port: "transfer",
+			channel: "channel-489",
 		},
 	},
 ]
@@ -321,7 +125,6 @@ connectionChannels.forEach((channels: NFTChannel) => {
 })
 
 // Add ethereum context
-networkMap.ethereummainnet = ethereummainnet
 
 export const availableNetworks: Chain[] | undefined = Object.values(networkMap)
 

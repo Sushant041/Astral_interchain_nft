@@ -49,18 +49,35 @@ const defaultGasForChain = (chain: Chain) => {
   return { gasPrice };
 }
 
+const xionChain = {
+  id: 1, // Replace with the actual Xion Chain ID
+  name: 'xion-testnet-1',
+  network: 'xion',
+  nativeCurrency: {
+    name: 'uxion',
+    symbol: 'XION',
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: { http: ['https://rpc.xion-testnet-1.burnt.com:443'] }, // Replace with the actual RPC URL
+    public: { http: ['https://rpc.xion-testnet-1.burnt.com:443'] },
+  },
+  blockExplorers: {
+    default: { name: 'XionScan', url: 'https://explorer.burnt.com/xion-testnet-1/' }, // Replace with actual block explorer
+  },
+};
+
 // const { chains, publicClient } = configureChains(
 const evmConfigs = configureChains(
-  [mainnet],
+  [xionChain],
   [
-    infuraProvider({ apiKey: process.env.NEXT_PUBLIC_API_KEY_INFURA || '' }),
     publicProvider()
   ]
 );
 
 const { connectors } = getDefaultWallets({
   appName: 'Astral',
-  projectId: process.env.NEXT_PUBLIC_API_KEY_WALLETCONNECT || '',
+  projectId: process.env.NEXT_PUBLIC_API_KEY_WALLETCONNECT || '09197cec233503fbfb79c0d2ed6bfed1',
   chains: evmConfigs.chains,
 });
 
@@ -110,7 +127,7 @@ function AstralApp({ Component, pageProps }: AppProps) {
       wallets={[...keplrWallets, ...cosmostationWallets, ...leapWallets]}
       walletConnectOptions={{
         signClient: {
-          projectId: process.env.NEXT_PUBLIC_API_KEY_WALLETCONNECT || 'a8510432ebb71e6948cfd6cde54b70f7',
+          projectId: process.env.NEXT_PUBLIC_API_KEY_WALLETCONNECT || '09197cec233503fbfb79c0d2ed6bfed1',
           relayUrl: 'wss://relay.walletconnect.org',
           metadata: {
             name: 'Astral',

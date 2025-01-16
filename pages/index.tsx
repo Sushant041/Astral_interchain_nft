@@ -7,7 +7,7 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline'
 const features = [
   {
     name: 'Seamless Interchain Transfers',
-    description: 'No more being locked into one blockchain. With Astral, you can easily transfer NFTs across various blockchains including Stargaze, Osmosis, Juno, Uptick & Iris.',
+    description: 'No more being locked into one blockchain. With Astral, you can easily transfer NFTs across various blockchains.',
     imageSrc: '/docs/transfer_nft_ics721.gif',
     imageAlt: '',
     ctaName: 'View NFTs',
@@ -75,11 +75,8 @@ export default function Index() {
                 className="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8"
               >
                 <div
-                  className={classNames(
-                    featureIdx % 2 === 0 ? 'lg:col-start-1' : 'lg:col-start-8 xl:col-start-9',
-                    'mt-6 lg:col-span-5 lg:row-start-1 lg:mt-0 xl:col-span-4'
-                  )}
-                >
+                  className={`mt-6 lg:col-span-5 lg:row-start-1 lg:mt-0 xl:col-span-4 ${featureIdx % 2 === 0 ? 'lg:col-start-1' : 'lg:col-start-8 xl:col-start-9'}`}>
+
                   <h3 className="text-2xl font-medium text-pink-600">{feature.name}</h3>
                   <p className="mt-2 text-md text-gray-500">{feature.description}</p>
                   {feature.ctaHref && (
@@ -92,10 +89,10 @@ export default function Index() {
                   )}
                 </div>
                 <div
-                  className={classNames(
-                    featureIdx % 2 === 0 ? 'lg:col-start-6 xl:col-start-5' : 'lg:col-start-1',
-                    'flex-auto lg:col-span-7 lg:row-start-1 xl:col-span-8'
-                  )}
+                  className={`
+                    ${featureIdx % 2 === 0 ? 'lg:col-start-6 xl:col-start-5' : 'lg:col-start-1'}
+                    flex-auto lg:col-span-7 lg:row-start-1 xl:col-span-8`
+                  }
                 >
                   <div className="aspect-h-2 aspect-w-5 overflow-hidden rounded-lg bg-gray-900 border border-1 border-gray-800">
                     <img src={feature.imageSrc} alt={feature.imageAlt} width="100%" height="100%" className="object-cover object-center w-full h-full" />

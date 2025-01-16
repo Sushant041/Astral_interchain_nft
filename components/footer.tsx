@@ -6,16 +6,16 @@ export const Footer = () => {
       <span className="flex flex-row items-center gap-2">
         <p>Built with ☕️ by </p>
         <a
-          href="https://github.com/ravichain"
+          href="https://github.com/Sushant041"
           target="_blank"
           rel="noopener noreferrer"
-        >Ravi</a>
+        >Sushant</a>
         &
         <a
-          href="https://github.com/trevorjtclarke"
+          href="https://github.com/preyanshu"
           target="_blank"
           rel="noopener noreferrer"
-        >TJTC</a>
+        >Preyanshu</a>
       </span>
     </footer>
   );
